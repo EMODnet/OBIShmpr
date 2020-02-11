@@ -12,12 +12,6 @@ get_temp_summ_by_sp(
 )
 }
 \arguments{
-\item{sp_id}{}
-
-\item{save_all_recs}{}
-
-\item{check_match}{}
-
 \item{use_defaults}{}
 }
 \value{

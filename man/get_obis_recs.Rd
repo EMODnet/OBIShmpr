@@ -13,10 +13,6 @@ get_obis_recs(
 )
 }
 \arguments{
-\item{species_id}{}
-
-\item{missing_check}{}
-
 \item{fields}{}
 }
 \value{
