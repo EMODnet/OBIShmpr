@@ -37,4 +37,14 @@ library(OBIShmpr)
 ## basic example code
 ```
 
+## An example with one species
+
+This is an example of how to run the above code for a single species -
+we use *Scytothamnus fasciculatus*, Aphia ID 325567, chosen as it has
+just 6 OBIS records so should run reasonably quickly.
+
+``` r
+get_temp_summ_by_sp(sp_id = 325567)
+```
+
 ### Get species profile for habitat
