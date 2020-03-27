@@ -1,4 +1,4 @@
-#' Title
+#' Extract `sdmpredictor` raster data for an OBIS occurence `sf`
 #'
 #' @param obis_recs data.frame of OBIS records
 #' @param layercodes character vector of bio oracle layer names
@@ -26,6 +26,7 @@ get_sdmpredictors <- function(obis_recs, layercodes,
       recursive = TRUE, 
       showWarnings = FALSE
     )
+    usethis::use_git_ignore("cached-data")
     usethis::use_build_ignore("cached-data")
   }
 
@@ -40,11 +41,9 @@ get_sdmpredictors <- function(obis_recs, layercodes,
   
   
   # Extract the temperatures for each point
-  spdm_h <- raster::extract(spdm_rst, obis_recs) %>%
+  raster::extract(spdm_rst, obis_recs) %>%
     tibble::as_tibble()
 
-  # add these temperatures back to the OBIS records and return
-  return(dplyr::bind_cols(obis_recs, spdm_h))
 }
 
 
