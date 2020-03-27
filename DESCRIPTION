@@ -17,7 +17,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Imports:
     cowplot (>= 1.0.0),
     dplyr (>= 0.8.3),
@@ -35,5 +35,11 @@ Imports:
     readr,
     sf,
     viridis (>= 0.5.1),
-    worrms (>= 0.4.0)
+    worrms (>= 0.4.0),
+    magrittr,
+    glue,
+    usethis,
+    purrr
 Date: 2020-02-10
+Suggests: 
+    rmarkdown
