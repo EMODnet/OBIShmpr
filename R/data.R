@@ -29,7 +29,7 @@
 #'   ...
 #' }
 #' @source \url{https://doi.org/10.5194/essd-10-109-2018}
-"sm_rst"
+"sedm_rst"
 
 #' sedmaps raster stack variable names.
 #' 
@@ -38,4 +38,4 @@
 #'   \item{sed}{sediment characteristics layers}
 #'   \item{dis}{monthly sedimentary distrurbance layers}
 #'   }
-"sm_layers"
+"sedm_layers"
