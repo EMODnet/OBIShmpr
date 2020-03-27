@@ -2,22 +2,31 @@
 % Please edit documentation in R/obis-api.R
 \name{get_obis_recs}
 \alias{get_obis_recs}
-\title{Title}
+\title{Query OBIS for occurence data}
 \usage{
 get_obis_recs(
-  species_id,
+  sp_id,
   missing_check = FALSE,
   fields = c("decimalLongitude", "decimalLatitude", "minimumDepthInMeters",
     "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName",
-    "aphiaID")
+    "aphiaID"),
+  trim = NULL
 )
 }
 \arguments{
-\item{fields}{}
+\item{sp_id}{a valid WoRMS aphiaID}
+
+\item{missing_check}{whether to check for validity of aphiaID on OBIS}
+
+\item{fields}{fields to return from OBIS query. Defaults to \code{c("decimalLongitude",  "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName", "aphiaID")}}
 }
 \value{
-
+a tibble of temporally and spatially located OBIS occurence records
+for \code{sp_id}.
 }
 \description{
-Title
+Query OBIS for occurence data
+}
+\examples{
+get_obis_recs(sp_id = 325567)
 }
