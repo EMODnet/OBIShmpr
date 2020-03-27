@@ -216,7 +216,7 @@ get_bio_oracle_t <- function(obis_recs, layercodes = c("BO_sstmean", "BO2_tempme
   dir.create(path = file.path(bo_path),
     recursive = FALSE, showWarnings = FALSE)}
   # load the layers
-  bo_t_dat <- load_layers(layercodes,
+  bo_t_dat <- sdmpredictors::load_layers(layercodes,
     equalarea = TRUE, datadir = "biooracle")
   # Turn the OBIS occurrence locations into spatial points
   points <- SpatialPoints(
