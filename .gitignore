@@ -2,3 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+cached-data
+raw-data
+attic
+inst/testdata
