@@ -1,0 +1,21 @@
+---
+title: "Getting started"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(OBIShmpr)
+```
+
+```{r}
+obis_recs <- get_obis_recs(sp_id = 325567)
+
+obis_recs
+```
+
