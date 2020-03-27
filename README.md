@@ -8,8 +8,42 @@
 <!-- badges: end -->
 
 The goal of OBIShmpr is to link and query OBIS occurence data with a
-variety of marine habitat
-data.
+variety of marine habitat data.
+
+### Data Sources
+
+  - #### Bio-ORACLE:
+    
+    a set of GIS rasters providing geophysical, biotic and environmental
+    data for surface and benthic marine realms.
+    <https://www.bio-oracle.org/>. Accessed via
+    [`sdmpredictors`](https://github.com/lifewatch/sdmpredictors)
+
+  - #### EMODnet Seabed Habitat maps:
+    
+    a
+
+  - #### [Synthetic map of the NW European Shelf sedimentary environment](https://www.earth-syst-sci-data.net/10/109/2018/essd-10-109-2018.pdf)
+    
+    **data product**
+    [10.15129/1e27b806-1eae-494d-83b5-a5f4792c46fc](https://pureportal.strath.ac.uk/en/datasets/data-for-a-synthetic-map-of-the-northwest-european-shelf-sediment)
+    0.125◦ by 0.125◦ resolution synthetic maps of continuous properties
+    of the north-west European sedimentary environment. The maps are a
+    blend of gridded survey data, statistically modelled values based on
+    distributions of bed shear stress due to tidal currents and waves
+    and bathymetric properties.
+    
+      - percentage compositions of mud, sand and gravel;
+      - porosity and permeability;
+      - median grain size of the whole sediment and of the sand and the
+        gravel fractions;
+      - carbon and nitrogen content of sediments;
+      - percentage of seabed area covered by rock;
+      - mean and maximum depth-averaged tidal velocity and wave orbital
+        velocity at the seabed; and mean monthly natural disturbance
+        rates.
+
+  - #### [EMODnet Habitat maps]()
 
 ## Installation
 
