@@ -3,3 +3,5 @@
 ^\.Rproj\.user$
 ^attic$
 ^LICENSE\.md$
+^vignettes/articles$
+^cached-data$
