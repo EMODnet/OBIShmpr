@@ -5,9 +5,9 @@
 #' @param outdir directory to cache data into
 #' @param crs crs of obis records. If NULL, defaults to WSG 84
 #'
-#' @return
+#' @return a tibble of extracted sdmpredictor raster data, one column per layercode.
 #' @export
-get_sdmpredictors <- function(obis_recs, layercodes,
+get_spdm <- function(obis_recs, layercodes,
                              cache_dir = NULL, crs = NULL) {
   
   layercodes <- match.arg(layercodes, choices = layer_info$layer_code,
