@@ -5,9 +5,9 @@
 #'
 #' @return a tibble of extracted layer data
 #' @export
-get_sedm <- function(obis_recs, layers = names(sm_rst)){
-    checkmate::assert_subset(layers, names(sm_rst))
+get_sedm <- function(obis_recs, layers){
+    checkmate::assert_subset(layers, names(sedm_rst))
     
-    raster::extract(sm_rst[[layers]], obis_recs) %>% 
+    raster::extract(sedm_rst[[layers]], obis_recs) %>% 
         tibble::as_tibble()
 }

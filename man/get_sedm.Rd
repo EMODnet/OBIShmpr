@@ -4,7 +4,7 @@
 \alias{get_sedm}
 \title{Extract sedmaps data for an OBIS occurence sf}
 \usage{
-get_sedm(obis_recs, layers = names(sm_rst))
+get_sedm(obis_recs, layers)
 }
 \arguments{
 \item{obis_recs}{OBIS occurence sf}
