@@ -29,6 +29,7 @@
 #'   ...
 #' }
 #' @source \url{https://doi.org/10.5194/essd-10-109-2018}
+#' @importFrom raster raster
 "sedm_rst"
 
 #' sedmaps raster stack variable names.
