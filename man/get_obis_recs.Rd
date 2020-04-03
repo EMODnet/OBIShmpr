@@ -6,7 +6,7 @@
 \usage{
 get_obis_recs(
   sp_id,
-  missing_check = FALSE,
+  validate_sp_id = FALSE,
   fields = c("decimalLongitude", "decimalLatitude", "minimumDepthInMeters",
     "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName",
     "aphiaID"),
@@ -16,12 +16,12 @@ get_obis_recs(
 \arguments{
 \item{sp_id}{a valid WoRMS aphiaID}
 
-\item{missing_check}{whether to check for validity of aphiaID on OBIS}
+\item{validate_sp_id}{whether to check for validity of aphiaID on OBIS}
 
 \item{fields}{fields to return from OBIS query. Defaults to \code{c("decimalLongitude",  "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName", "aphiaID")}}
 }
 \value{
-a tibble of temporally and spatially located OBIS occurence records
+a tibble of OBIS occurence records
 for \code{sp_id}.
 }
 \description{

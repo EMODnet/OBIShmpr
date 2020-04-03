@@ -1,18 +1,18 @@
 #' Query OBIS for occurence data
 #'
 #' @param sp_id a valid WoRMS aphiaID
-#' @param missing_check whether to check for validity of aphiaID on OBIS
+#' @param validate_sp_id whether to check for validity of aphiaID on OBIS
 #' @param fields fields to return from OBIS query. Defaults to `c("decimalLongitude", 
 #' "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth",
 #' "eventDate", "year", "month", "scientificName", "aphiaID")`
 #'
-#' @return a tibble of temporally and spatially located OBIS occurence records 
+#' @return a tibble of OBIS occurence records
 #' for `sp_id`.
 #' @export
 #'
 #' @examples
 #' get_obis_recs(sp_id = 325567)
-get_obis_recs <- function(sp_id, missing_check = FALSE,
+get_obis_recs <- function(sp_id, validate_sp_id = FALSE,
                           fields = c(
                             "decimalLongitude", "decimalLatitude",
                             "minimumDepthInMeters", "maximumDepthInMeters", "depth",
@@ -30,25 +30,16 @@ get_obis_recs <- function(sp_id, missing_check = FALSE,
     "scientificName", "aphiaID"
   ), several.ok = TRUE)
 
-  if (missing_check == TRUE) {
+  if (validate_sp_id) {
     # catch invalid / unrecognised AphiaIDs here - but recommend doing this prior to calling these functions
-    if (length(robis::checklist(taxonid = sp_id)) > 1) {
-      # get OBIS records for a given species ID, add year and month,
-      obis_recs <- robis::occurrence(
-        taxonid = sp_id, fields = fields
-      ) %>%
-        obis_recs_process()
-    } else {
-      # at present just returns an empty tibble, which causes problems with other functions further down the pipeline, hence recommend checking AphiaIDs prior to calling
-      obis_recs <- tibble::tibble()
-    }
-  } else {
+  sp_id <- checkmate_aphiaid(sp_id)
+  }
+
     obis_recs <- robis::occurrence(
       taxonid = sp_id, fields = fields
     ) %>%
-      obis_recs_process() %>%
-      dplyr::mutate(valid_AphiaID = sp_id)
-  }
+      obis_recs_process() 
+
   # return the OBIS records
   obis_recs
 }
@@ -98,7 +89,7 @@ checkmate_obis_recs <- function(obis_recs, crs = NULL){
                                 crs = crs)
     usethis::ui_done("{usethis::ui_code('obis_recs')} successfully converted to {usethis::ui_field('sf')}")
   }
-  if(is.na(crs(obis_recs)) | is.null(crs(obis_recs))){
+  if(is.na(sf::st_crs(obis_recs)) | is.null(sf::st_crs(obis_recs))){
     crs <- checkmate_crs(crs)
     obis_recs %<>% sf::st_set_crs(crs)
     usethis::ui_done("{usethis::ui_code('obis_recs')} {usethis::ui_field('crs')} successfully set")
@@ -107,3 +98,19 @@ checkmate_obis_recs <- function(obis_recs, crs = NULL){
   obis_recs
 }
 
+checkmate_aphiaid <- function(sp_id){
+  wm_record <- worrms::wm_record(c(1, sp_id)) %>%
+    dplyr::slice(-1)
+  
+  if(any(is.na(wm_record$AphiaID))){
+    usethis::ui_oops("{usethis::ui_field('sp_id')} {usethis::ui_value(sp_id[is.na(wm_record$AphiaID)])} do not match any WoRMS records. Ignored")
+  }
+  
+  valid_wm_records <- wm_record[!is.na(wm_record$AphiaID), ]
+  
+  id_diffs <- as.integer(valid_wm_records$AphiaID[valid_wm_records$AphiaID != valid_wm_records$valid_AphiaID])
+  if(length(id_diffs) > 0){
+    usethis::ui_warn("{usethis::ui_field('sp_id')} {usethis::ui_value(id_diffs)} not valid AphiaID. valid IDs used instead")
+  }
+  as.integer(valid_wm_records$valid_AphiaID)
+}
