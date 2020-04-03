@@ -22,11 +22,10 @@ The goal of OBIShmpr is to link and query OBIS occurence data with a variety of 
 
 ### Data Sources
 
-- #### Bio-ORACLE:
-    a set of GIS rasters providing geophysical, biotic and environmental data for surface and benthic marine realms. https://www.bio-oracle.org/. Accessed via [`sdmpredictors`](https://github.com/lifewatch/sdmpredictors)
-- #### EMODnet Seabed Habitat maps:
-    a 
-- #### [Synthetic map of the NW European
+- #### [**Bio-ORACLE**](https://www.bio-oracle.org/) & [**MARSPEC**](http://www.marspec.org/) data accesed through  `sdmpredictors`:
+    a set of GIS rasters providing geophysical, biotic and environmental data for surface and benthic marine realms. Accessed via [`sdmpredictors`](https://github.com/lifewatch/sdmpredictors)
+    
+- #### `sedmaps` [Synthetic map of the NW European
 Shelf sedimentary environment](https://www.earth-syst-sci-data.net/10/109/2018/essd-10-109-2018.pdf)
     **data product** [10.15129/1e27b806-1eae-494d-83b5-a5f4792c46fc](https://pureportal.strath.ac.uk/en/datasets/data-for-a-synthetic-map-of-the-northwest-european-shelf-sediment)
     0.125◦ by 0.125◦ resolution synthetic maps of continuous properties of the north-west European sedimentary environment. The maps are a blend of gridded survey
@@ -37,22 +36,17 @@ data, statistically modelled values based on distributions of bed shear stress d
     - carbon and nitrogen content of sediments; 
     - percentage of seabed area covered by rock; 
     - mean and maximum depth-averaged tidal velocity and wave orbital velocity at the seabed; and mean monthly natural disturbance rates. 
-- #### [EMODnet Habitat maps]()
+    
+- #### [EMODnet Seabed Habitat maps]()
   
 
 ## Installation
 
-<!-- You can install the released version of OBIShmpr from [CRAN](https://CRAN.R-project.org) with: 
-
-``` r
-install.packages("OBIShmpr")
-```
--->
 You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("annakrystalli/OBIShmpr")
+# install.packages("remotes")
+remotes::install_github("annakrystalli/OBIShmpr")
 ```
 ## Example
 
@@ -60,18 +54,32 @@ devtools::install_github("annakrystalli/OBIShmpr")
 
 ```{r example}
 library(OBIShmpr)
-## basic example code
 ```
 
 
 ## An example with one species
 This is an example of how to run the above code for a single species - we use _Scytothamnus fasciculatus_, Aphia ID 325567, chosen as it has just 6 OBIS records so should run reasonably quickly.
 
-```{r, message = FALSE, warning  = FALSE, eval = FALSE}
-get_temp_summ_by_sp(sp_id = 325567)
+Choose some layers to extract data from
+
+```{r}
+sp_id <- 325567
+layers <- c("BO2_nitratemax_bdmin", "BO_parmax", "BO2_tempmax_bdmax", "permeability", 
+"tidal_vel_max", "april")
+```
+
+```{r, message = FALSE, warning  = FALSE, eval = TRUE}
+obis_match_habitat(sp_id, layers = layers)
 ```
 
 
 
 
 ### Get species profile for habitat
+
+## EMODnet Seabed Habitat Data
+
+```{r}
+get_emodnet_wfs_layers(layers = c("be000142", "be000144"))
+```
+
