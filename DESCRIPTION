@@ -39,7 +39,8 @@ Imports:
     magrittr,
     glue,
     usethis,
-    purrr
+    purrr,
+    gdalUtils
 Date: 2020-02-10
 Suggests: 
     rmarkdown
