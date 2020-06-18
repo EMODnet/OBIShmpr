@@ -48,7 +48,11 @@ if save_all_recs == TRUE, this full matched dataset will be saved before summari
 function returns a summary of temperature affinity of the species
 }
 \examples{
-obis_match_habitat(sp_id = 325567, layers = c("BO_bathymean", 
-                   "BO2_phosphateltmax_bdmean", "BO2_salinitymin_ss", 
-                   "rock50cm", "april", "march"))
+\dontrun{
+obis_match_habitat(sp_id = 325567, layers = c(
+  "BO_bathymean",
+  "BO2_phosphateltmax_bdmean", "BO2_salinitymin_ss",
+  "rock50cm", "april", "march"
+))
+}
 }
