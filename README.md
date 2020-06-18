@@ -75,9 +75,6 @@ layers <- c("BO2_nitratemax_bdmin", "BO_parmax", "BO2_tempmax_bdmax", "permeabil
 
 ``` r
 obis_match_habitat(sp_id, layers = layers)
-#> ✔ `obis_recs` successfully converted to sf
-#> ✔ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs
-#> ✔ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs
 #> Simple feature collection with 6 features and 16 fields
 #> geometry type:  POINT
 #> dimension:      XY
@@ -99,46 +96,74 @@ obis_match_habitat(sp_id, layers = layers)
 #> #   april <lgl>
 ```
 
-### Get species profile for habitat
+``` r
+layer_codes <- c("BO_ph", "BO_phosphate", 
+                 "BO2_phosphatemean_bdmax", 
+                 "BO_nitrate", "BO2_nitratemean_bdmax", 
+                 "surface_nitrogen", "tn", "surface_carbon",
+                 "BO_sstmean", "BO_sstmin", "BO_sstmax", 
+                 "MS_biogeo13_sst_mean_5m", "MS_biogeo14_sst_min_5m",
+                 "MS_biogeo15_sst_max_5m")
+```
 
-## EMODnet Seabed Habitat Data
+### *Palinurus elephas*
+
+Next I use the AphiaID for *Palinurus elephas*.
 
 ``` r
-get_emodnet_wfs_layers(layers = c("be000142", "be000144"))
-#> Reading layer `emodnet_be000142' from data source `/Users/Anna/Documents/workflows/EMODnet/OBIShmpr/cached-data/emodnet_be000142.geojson' using driver `GeoJSON'
-#> Simple feature collection with 9 features and 18 fields
-#> geometry type:  MULTIPOLYGON
+species_id <- worrms::wm_name2id("Palinurus elephas")
+
+data <- OBIShmpr::obis_match_habitat(
+    sp_id = species_id, 
+    layers = layer_codes,
+    geometry = bbox_nwes)
+#> Retrieved 96 records of approximately 96 (100%)✓ `obis_recs` successfully converted to sf
+#> ✓ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs
+#> ✓ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs
+
+data
+#> Simple feature collection with 96 features and 24 fields
+#> geometry type:  POINT
 #> dimension:      XY
-#> bbox:           xmin: 319003.6 ymin: 6666315 xmax: 373792.7 ymax: 6696825
-#> epsg (SRID):    3857
-#> proj4string:    +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs
-#> Reading layer `emodnet_be000144' from data source `/Users/Anna/Documents/workflows/EMODnet/OBIShmpr/cached-data/emodnet_be000144.geojson' using driver `GeoJSON'
-#> Simple feature collection with 96 features and 18 fields
-#> geometry type:  MULTIPOLYGON
-#> dimension:      XY
-#> bbox:           xmin: 255415.1 ymin: 6641535 xmax: 363513.8 ymax: 6762441
-#> epsg (SRID):    3857
-#> proj4string:    +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs
-#> Simple feature collection with 105 features and 18 fields
-#> geometry type:  MULTIPOLYGON
-#> dimension:      XY
-#> bbox:           xmin: 255415.1 ymin: 6641535 xmax: 373792.7 ymax: 6762441
-#> epsg (SRID):    3857
-#> proj4string:    +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs
-#> # A tibble: 105 x 19
-#>    gml_id    gid gui   polygon orig_hab orig_class hab_type version det_mthd
-#>    <fct>   <int> <fct>   <int> <fct>    <fct>      <fct>    <fct>   <fct>   
-#>  1 be000… 162334 BE00…     222 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  2 be000… 162338 BE00…     228 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  3 be000… 162337 BE00…     227 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  4 be000… 162336 BE00…     226 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  5 be000… 162341 BE00…     229 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  6 be000… 162333 BE00…     221 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  7 be000… 162335 BE00…     223 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  8 be000… 162340 BE00…     225 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#>  9 be000… 162339 BE00…     224 ME_Maco… <NA>       A5.331   EUNIS … Re-dete…
-#> 10 be000… 162423 BE00…     312 ME_Neph… <NA>       A5.25_B… Propos… Re-dete…
-#> # … with 95 more rows, and 10 more variables: det_name <fct>, det_date <date>,
-#> #   t_relate <fct>, tran_com <fct>, val_comm <fct>, eunis_l3 <fct>, comp <fct>,
-#> #   comp_type <fct>, sum_conf <int>, geometry <MULTIPOLYGON [m]>
+#> bbox:           xmin: -10.60808 ymin: 45.59042 xmax: 4.95983 ymax: 58.92086
+#> epsg (SRID):    4326
+#> proj4string:    +proj=longlat +datum=WGS84 +no_defs
+#> # A tibble: 96 x 25
+#>    month year  scientificName aphiaID maximumDepthInM… id    eventDate
+#>    <chr> <chr> <chr>            <int>            <dbl> <chr> <chr>    
+#>  1 08    1992  Palinurus ele…  107703               NA 039f… 1992-08-…
+#>  2 07    2003  Palinurus ele…  107703               NA 0a5a… 2003-07-…
+#>  3 05    2010  Palinurus ele…  107703               NA 0a88… 2010-05-…
+#>  4 07    1977  Palinurus ele…  107703               NA 0b6f… 1977-07-…
+#>  5 06    1981  Palinurus ele…  107703               NA 0e4d… 1981-06-…
+#>  6 05    2010  Palinurus ele…  107703               NA 0f0d… 2010-05-…
+#>  7 08    2009  Palinurus ele…  107703               NA 1041… 2009-08-…
+#>  8 07    2009  Palinurus ele…  107703               NA 109e… 2009-07-…
+#>  9 08    1988  Palinurus ele…  107703               NA 14f4… 1988-08-…
+#> 10 07    2011  Palinurus ele…  107703               NA 17f1… 2011-07-…
+#> # … with 86 more rows, and 18 more variables: minimumDepthInMeters <int>,
+#> #   depth <dbl>, depth0 <dbl>, geometry <POINT [°]>, BO_ph <dbl>,
+#> #   BO_phosphate <dbl>, BO2_phosphatemean_bdmax <dbl>, BO_nitrate <dbl>,
+#> #   BO2_nitratemean_bdmax <dbl>, surface_nitrogen <dbl>, tn <dbl>,
+#> #   surface_carbon <dbl>, BO_sstmean <dbl>, BO_sstmin <dbl>, BO_sstmax <dbl>,
+#> #   MS_biogeo13_sst_mean_5m <dbl>, MS_biogeo14_sst_min_5m <dbl>,
+#> #   MS_biogeo15_sst_max_5m <dbl>
 ```
+
+``` r
+library(ggplot2)
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+
+
+ggplot() +
+    geom_sf(data = world) +
+    geom_sf(data = data, aes(color = BO_ph) ) +
+    coord_sf(crs = 3035,
+             xlim = c(2426378.0132, 7093974.6215),
+             ylim = c(1308101.2618, 5446513.5222)) +
+    theme_bw() +
+    ggtitle("Palinurus elephas",
+            subtitle = paste0('AphiaID = ', species_id))
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />

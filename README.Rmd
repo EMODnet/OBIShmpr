@@ -74,12 +74,48 @@ obis_match_habitat(sp_id, layers = layers)
 
 
 
+```{r}
+layer_codes <- c("BO_ph", "BO_phosphate", 
+                 "BO2_phosphatemean_bdmax", 
+                 "BO_nitrate", "BO2_nitratemean_bdmax", 
+                 "surface_nitrogen", "tn", "surface_carbon",
+                 "BO_sstmean", "BO_sstmin", "BO_sstmax", 
+                 "MS_biogeo13_sst_mean_5m", "MS_biogeo14_sst_min_5m",
+                 "MS_biogeo15_sst_max_5m")
+```
 
-### Get species profile for habitat
 
-## EMODnet Seabed Habitat Data
+
+### _Palinurus elephas_
+
+Next I use the AphiaID for _Palinurus elephas_.
+
 
 ```{r}
-get_emodnet_wfs_layers(layers = c("be000142", "be000144"))
+species_id <- worrms::wm_name2id("Palinurus elephas")
+
+data <- OBIShmpr::obis_match_habitat(
+    sp_id = species_id, 
+    layers = layer_codes,
+    geometry = bbox_nwes)
+
+data
+```
+
+```{r}
+library(ggplot2)
+world <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
+
+
+ggplot() +
+    geom_sf(data = world) +
+    geom_sf(data = data, aes(color = BO_ph) ) +
+    coord_sf(crs = 3035,
+             xlim = c(2426378.0132, 7093974.6215),
+             ylim = c(1308101.2618, 5446513.5222)) +
+    theme_bw() +
+    ggtitle("Palinurus elephas",
+            subtitle = paste0('AphiaID = ', species_id))
+
 ```
 
