@@ -37,7 +37,10 @@ geometry is simple and restricted in space.}
 NULL for queries that return no obis records.}
 }
 \value{
-
+an \code{sf} object, one row for each species occurence returned from obis.
+Column include requested OBIS metadata through \code{fields} argument plus a column
+for each layer environmental layer requested containing data retuned for each
+occurence location.
 }
 \description{
 function to get OBIS records for a given species and match to IAP and Bio-Oracle temperatures
@@ -45,6 +48,7 @@ if save_all_recs == TRUE, this full matched dataset will be saved before summari
 function returns a summary of temperature affinity of the species
 }
 \examples{
-obis_match_habitat(sp_id = 325567, 
-layers = c("BO_bathymean", "BO2_phosphateltmax_bdmean", "BO2_salinitymin_ss", "rock50cm", "april", "march"))
+obis_match_habitat(sp_id = 325567, layers = c("BO_bathymean", 
+                   "BO2_phosphateltmax_bdmean", "BO2_salinitymin_ss", 
+                   "rock50cm", "april", "march"))
 }
