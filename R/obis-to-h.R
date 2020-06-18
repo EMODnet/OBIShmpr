@@ -7,12 +7,13 @@
 #' @param sp_id validates species Aphia ID
 #' @param check_match whether to check validity of `sp_id`. 
 #' @param layers character vector of habitat layers to match
-#' @param trim whether to trim output to a particular area
+#' @param overwrite whether to re-download and overwrite already downloaded layers
 #' @inheritParams get_obis_recs
 #' @return an `sf` object, one row for each species occurence returned from obis.
 #' Column include requested OBIS metadata through `fields` argument plus a column 
 #' for each layer environmental layer requested containing data retuned for each
 #' occurence location.
+#' @importFrom rlang .env
 #' @export
 #'
 #' @examples
@@ -29,16 +30,16 @@ obis_match_habitat <- function(sp_id, layers,
                                #save_all_recs = TRUE, 
                                check_match = FALSE,
                                validate_sp_id = FALSE, 
-                               trim = NULL,
                                geometry = NULL, 
-                               ignore_failures = FALSE) {
+                               ignore_failures = FALSE,
+                               overwrite = FALSE) {
   
   if (check_match == TRUE) {
     # TODO
   }
 
   # Get OBIS records
-  obis_recs <- get_obis_recs(sp_id = sp_id, trim = trim, 
+  obis_recs <- get_obis_recs(sp_id = sp_id,
                              validate_sp_id = validate_sp_id,
                              geometry = geometry, 
                              ignore_failures = ignore_failures) 
@@ -66,5 +67,5 @@ obis_match_habitat <- function(sp_id, layers,
                              get_spdm(obis_recs, layers_by_data_source[["sdmpredictors"]]))
   }
   
-  dplyr::bind_cols(obis_recs, extr[, layers])
+  dplyr::bind_cols(obis_recs, extr[ , layers])
 }

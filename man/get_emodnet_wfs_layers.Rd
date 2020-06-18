@@ -2,34 +2,31 @@
 % Please edit documentation in R/h-emodnet.R
 \name{get_emodnet_wfs_layers}
 \alias{get_emodnet_wfs_layers}
-\title{Access EMODnet EUNIS Seabed Habitat layers}
+\title{Access EMODnet WFS layers}
 \usage{
-get_emodnet_wfs_layers(
-  layers,
-  cache_dir = NULL,
-  wfs_url = "https://ows.emodnet-seabedhabitats.eu/emodnet_open_maplibrary/wfs",
-  crs = 4326,
-  overwrite = FALSE
-)
+get_emodnet_wfs_layers(layers, service, cache_dir = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{layers}{character vector of EMODnet seabed habitat wfs layer names.}
 
+\item{service}{name of the EMODnet WFS service.}
+
 \item{cache_dir}{path to the cached data directory. Defaults to the "cached-data'
 folder in the root of the current project}
 
-\item{wfs_url}{url to the EMODnet WFS service. Defaults to the EUNIS seabed habitat map wfs.}
-
-\item{crs}{EPSG crs code to reproject to. Defaults to 4326}
+\item{overwrite}{whether to re-download and overwrite already downloaded layers}
 }
 \value{
 an sf of requested features
 }
 \description{
-Access EMODnet EUNIS Seabed Habitat layers
+Access EMODnet WFS layers
 }
 \examples{
+\dontrun
 proj_dir <- tempdir()
 cache_dir <- fs::path(proj_dir, "cached-data")
-get_emodnet_wfs_layers(layers = "be000142", cache_dir = cache_dir)
+get_emodnet_wfs_layers(layers = "be000142", 
+                       service = "seabed_habitats_individual_habitat_map_and_model_datasets",
+                      cache_dir = cache_dir)
 }

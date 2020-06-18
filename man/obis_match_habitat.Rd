@@ -12,9 +12,9 @@ obis_match_habitat(
     "aphiaID"),
   check_match = FALSE,
   validate_sp_id = FALSE,
-  trim = NULL,
   geometry = NULL,
-  ignore_failures = FALSE
+  ignore_failures = FALSE,
+  overwrite = FALSE
 )
 }
 \arguments{
@@ -28,13 +28,13 @@ obis_match_habitat(
 
 \item{validate_sp_id}{whether to check for validity of aphiaID on OBIS}
 
-\item{trim}{whether to trim output to a particular area}
-
 \item{geometry}{an sf object. Queries will be faster if the
 geometry is simple and restricted in space.}
 
 \item{ignore_failures}{whether to through an error or return
 NULL for queries that return no obis records.}
+
+\item{overwrite}{whether to re-download and overwrite already downloaded layers}
 }
 \value{
 an \code{sf} object, one row for each species occurence returned from obis.

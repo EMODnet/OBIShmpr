@@ -1,6 +1,6 @@
 Package: OBIShmpr
 Title: Link and query OBIS occurence data with a variety of marine habitat data
-Version: 0.0.0.901
+Version: 0.0.902
 Authors@R: c(
     person(given = "Anna",
            family = "Krystalli",
@@ -40,7 +40,8 @@ Imports:
     EMODnetWFS,
     fs,
     checkmate,
-    janitor
+    janitor,
+    rlang
 Date: 2020-02-10
 Remotes:
     annakrystalli/EMODnetWFS

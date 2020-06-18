@@ -2,8 +2,8 @@
 #'
 #' @param obis_recs data.frame of OBIS records
 #' @param layercodes character vector of bio oracle layer names
-#' @param outdir directory to cache data into
-#' @param crs crs of obis records. If NULL, defaults to WSG 84
+#' @param cache_dir directory to cache data into
+#' @param crs crs of obis records. If NULL, defaults to EPSG code 4326 (WSG 84)
 #'
 #' @return a tibble of extracted sdmpredictor raster data, one column per layercode.
 #' @export
@@ -18,7 +18,7 @@ get_spdm <- function(obis_recs, layercodes,
   # Function to match a set of OBIS occurrence recrods to mean SST and SBT from Bio-ORACLE
   # Set path for where these two temperature datasets will be stored
   if(is.null(cache_dir)){
-    cache_dir <- here::here("cached-data")
+    cache_dir <- "cached-data"
   }
   if(!dir.exists(cache_dir)){
     dir.create(
@@ -46,7 +46,7 @@ get_spdm <- function(obis_recs, layercodes,
 
 }
 
-
+#' @importFrom rlang :=
 extract_h_raster <- function(layercode, raster_stack, points){
   h_v <- raster::extract(raster_stack[[layercode]], points)
   

@@ -11,9 +11,9 @@ get_spdm(obis_recs, layercodes, cache_dir = NULL, crs = NULL)
 
 \item{layercodes}{character vector of bio oracle layer names}
 
-\item{crs}{crs of obis records. If NULL, defaults to WSG 84}
+\item{cache_dir}{directory to cache data into}
 
-\item{outdir}{directory to cache data into}
+\item{crs}{crs of obis records. If NULL, defaults to EPSG code 4326 (WSG 84)}
 }
 \value{
 a tibble of extracted sdmpredictor raster data, one column per layercode.

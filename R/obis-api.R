@@ -5,7 +5,6 @@
 #' @param fields fields to return from OBIS query. Defaults to `c("decimalLongitude",
 #' "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth",
 #' "eventDate", "year", "month", "scientificName", "aphiaID")`
-#' @param trim
 #' @param geometry an sf object. Queries will be faster if the
 #' geometry is simple and restricted in space.
 #' @param ignore_failures whether to through an error or return
@@ -23,7 +22,7 @@ get_obis_recs <- function(sp_id, validate_sp_id = FALSE,
                             "minimumDepthInMeters", "maximumDepthInMeters", "depth",
                             "eventDate", "year", "month",
                             "scientificName", "aphiaID"
-                          ), trim = NULL, geometry = NULL, ignore_failures = FALSE) {
+                          ), geometry = NULL, ignore_failures = FALSE) {
   # Fuction to get OBIS records for a given sp_id, which must be a recognised WoRMS Aphia ID
 
   # NB OBIS returns records from all taxa gathered under the same valid Aphia ID; the aphia ID returned is that of the taxon as recorded, not necessarily the valid ID, so in order that the final dataset is correctly named we add back in the 'correct' ID here as valid_AphiaID
@@ -39,7 +38,7 @@ get_obis_recs <- function(sp_id, validate_sp_id = FALSE,
     # catch invalid / unrecognised AphiaIDs here - but recommend doing this prior to calling these functions
     sp_id <- checkmate_aphiaid(sp_id)
   }
-  geometry <- geometry_checkmate(geometry)
+  geometry <- checkmate_geometry(geometry)
 
   obis_recs <- robis::occurrence(
     taxonid = sp_id, fields = fields,
@@ -58,6 +57,7 @@ get_obis_recs <- function(sp_id, validate_sp_id = FALSE,
     obis_recs_process()
 }
 
+#' @importFrom rlang .data
 obis_recs_process <- function(obis_recs) {
   obis_recs <- tibble::as_tibble(obis_recs)
 
@@ -93,7 +93,6 @@ checkmate_crs <- function(crs, to_crs = 4326) {
   crs
 }
 
-#' @export
 checkmate_obis_recs <- function(obis_recs, crs = NULL) {
   if (!checkmate::test_class(obis_recs, "sf")) {
     crs <- checkmate_crs(crs)
@@ -130,7 +129,7 @@ checkmate_aphiaid <- function(sp_id) {
 }
 
 
-geometry_checkmate <- function(geometry) {
+checkmate_geometry <- function(geometry) {
   if (is.null(geometry)) {
     geometry
   } else {

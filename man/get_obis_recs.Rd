@@ -10,7 +10,6 @@ get_obis_recs(
   fields = c("decimalLongitude", "decimalLatitude", "minimumDepthInMeters",
     "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName",
     "aphiaID"),
-  trim = NULL,
   geometry = NULL,
   ignore_failures = FALSE
 )
