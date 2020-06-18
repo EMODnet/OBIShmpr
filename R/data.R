@@ -40,3 +40,29 @@
 #'   \item{dis}{monthly sedimentary distrurbance layers}
 #'   }
 "sedm_layers"
+
+#' MSDF MPA assessment area boundary box.
+#' 
+#' The spatial extent of the MPA assessment areas was defined 
+#' as the marine waters surrounding the EU countries whose outer limit is defined 
+#' by the 200 NM boundary from the coast (possibly coinciding with formally 
+#' recognised EEZ boundaries) or the equidistance (in cases of opposite neighbouring 
+#' EU countries), or by the presence of a boundary defined by an agreed treaty. 
+#' However, since no formal boundary of this map exists and since this limit 
+#' coincides with the boundary of the maritime area (water column) submitted by 
+#' EU Member States under MSFD Articles 8, 9 and 10 in the Eionet Central 
+#' Data Repository (CDR) ), the decision was taken to use the MSFD Region/Subregion 
+#' boundary shapefile assembled in 2013 by ETC/ICM (ETC/ICM, 2013), 
+#' based on EU Member States reported data integrated with information from the 
+#' Flanders Marine Institute (VLIZ) Maritime Boundaries (version 7) to 
+#' delimit the MPA assessment areas
+#' @source https://www.eea.europa.eu/data-and-maps/data/europe-seas/mpa-assessment-areas
+#' @format sf of MSDF MPA assessment area boundary box.
+"bbox_msdf_mpa"
+
+
+#' North-west European Shelf boundary box.
+#' 
+#' @source https://doi.org/10.5194/essd-10-109-2018
+#' @format sf of North-west European Shelf boundary box.
+"bbox_nwes"
