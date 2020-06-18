@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![R build
+status](https://github.com/annakrystalli/OBIShmpr/workflows/R-CMD-check/badge.svg)](https://github.com/annakrystalli/OBIShmpr/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/annakrystalli/OBIShmpr/branch/master/graph/badge.svg)](https://codecov.io/gh/annakrystalli/OBIShmpr?branch=master)
 <!-- badges: end -->
 
 The goal of OBIShmpr is to link and query OBIS occurence data with a

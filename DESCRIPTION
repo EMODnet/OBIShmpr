@@ -50,6 +50,7 @@ Suggests:
     ggplot2,
     testthat (>= 2.1.0),
     ncdf4,
-    rnaturalearth
+    rnaturalearth,
+    covr
 Depends: 
     R (>= 2.10)
