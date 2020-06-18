@@ -6,3 +6,5 @@
 ^vignettes/articles$
 ^cached-data$
 ^raw-data$
+^data-raw$
+^docs$
