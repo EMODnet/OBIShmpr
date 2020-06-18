@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">OBIShmpr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.902</span>
       </span>
     </div>
 
@@ -123,10 +123,12 @@
 
     <pre class="usage"><span class='fu'>get_obis_recs</span>(
   <span class='no'>sp_id</span>,
-  <span class='kw'>missing_check</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>validate_sp_id</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"decimalLongitude"</span>, <span class='st'>"decimalLatitude"</span>, <span class='st'>"minimumDepthInMeters"</span>,
     <span class='st'>"maximumDepthInMeters"</span>, <span class='st'>"depth"</span>, <span class='st'>"eventDate"</span>, <span class='st'>"year"</span>, <span class='st'>"month"</span>, <span class='st'>"scientificName"</span>,
-    <span class='st'>"aphiaID"</span>)
+    <span class='st'>"aphiaID"</span>),
+  <span class='kw'>geometry</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>ignore_failures</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -137,22 +139,32 @@
       <td><p>a valid WoRMS aphiaID</p></td>
     </tr>
     <tr>
-      <th>missing_check</th>
+      <th>validate_sp_id</th>
       <td><p>whether to check for validity of aphiaID on OBIS</p></td>
     </tr>
     <tr>
       <th>fields</th>
-      <td><p>fields to return from OBIS query. Defaults to <code><a href='https://rdrr.io/r/base/c.html'>c("decimalLongitude",  "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName", "aphiaID")</a></code></p></td>
+      <td><p>fields to return from OBIS query. Defaults to <code><a href='https://rdrr.io/r/base/c.html'>c("decimalLongitude", "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName", "aphiaID")</a></code></p></td>
+    </tr>
+    <tr>
+      <th>geometry</th>
+      <td><p>an sf object. Queries will be faster if the
+geometry is simple and restricted in space.</p></td>
+    </tr>
+    <tr>
+      <th>ignore_failures</th>
+      <td><p>whether to through an error or return
+NULL for queries that return no obis records.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble of temporally and spatially located OBIS occurence records
+    <p>a tibble of OBIS occurence records
 for <code>sp_id</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_obis_recs</span>(<span class='kw'>sp_id</span> <span class='kw'>=</span> <span class='fl'>325567</span>)</div><div class='output co'>#&gt; <span class='message'>Retrieved 6 records of approximately 6 (100%)</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 13</span><span>
+    <pre class="examples"><div class='input'><span class='fu'>get_obis_recs</span>(<span class='kw'>sp_id</span> <span class='kw'>=</span> <span class='fl'>325567</span>)</div><div class='output co'>#&gt; <span class='message'>Retrieved 6 records of approximately 6 (100%)</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 12</span><span>
 #&gt;   scientificName aphiaID maximumDepthInM… decimalLongitude decimalLatitude id   
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span> Scytothamnus …  </span><span style='text-decoration: underline;'>325</span><span>567 </span><span style='color: #BB0000;'>NA</span><span>                           173.           -</span><span style='color: #BB0000;'>43.6</span><span> 079a…
@@ -161,8 +173,8 @@ for <code>sp_id</code>.</p>
 #&gt; </span><span style='color: #555555;'>4</span><span> Scytothamnus …  </span><span style='text-decoration: underline;'>325</span><span>567 </span><span style='color: #BB0000;'>NA</span><span>                           173.           -</span><span style='color: #BB0000;'>43.6</span><span> 99b4…
 #&gt; </span><span style='color: #555555;'>5</span><span> Scytothamnus …  </span><span style='text-decoration: underline;'>325</span><span>567 </span><span style='color: #BB0000;'>NA</span><span>                           -</span><span style='color: #BB0000;'>65</span><span>            -</span><span style='color: #BB0000;'>40.7</span><span> cbf1…
 #&gt; </span><span style='color: #555555;'>6</span><span> Scytothamnus …  </span><span style='text-decoration: underline;'>325</span><span>567 </span><span style='color: #BB0000;'>NA</span><span>                           168.           -</span><span style='color: #BB0000;'>46.9</span><span> dd42…
-#&gt; </span><span style='color: #555555;'># … with 7 more variables: minimumDepthInMeters </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #555555;'>, eventDate </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,
-#&gt; #   depth </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, year </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, month </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, depth0 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, valid_AphiaID </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
+#&gt; </span><span style='color: #555555;'># … with 6 more variables: minimumDepthInMeters </span><span style='color: #555555;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #555555;'>, eventDate </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
+#&gt; </span><span style='color: #555555;'>#   depth </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, year </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, month </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, depth0 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -178,7 +190,7 @@ for <code>sp_id</code>.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Anna Krystalli, Thomas Webb.</p>
+  <p>Developed by Anna Krystalli, European Marine Observation Data Network (EMODnet) Biology project European Commission's Directorate - General for Maritime Affairs and Fisheries (DG MARE).</p>
 </div>
 
 <div class="pkgdown">

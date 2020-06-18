@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Link and query OBIS occurence data with a variety of marine habitat data. • OBIShmpr</title>
+<title>Link and query OBIS occurence data with a variety of marine habitat data • OBIShmpr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Link and query OBIS occurence data with a variety of marine habitat data.">
+<script src="pkgdown.js"></script><meta property="og:title" content="Link and query OBIS occurence data with a variety of marine habitat data">
 <meta property="og:description" content="What the package does (one paragraph).">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">OBIShmpr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.902</span>
       </span>
     </div>
 
@@ -75,20 +75,40 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#obishmpr" class="anchor"></a>OBIShmpr</h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <p>The goal of OBIShmpr is to link and query OBIS occurence data with a variety of marine habitat data.</p>
+<div id="data-sources" class="section level3">
+<h3 class="hasAnchor">
+<a href="#data-sources" class="anchor"></a>Data Sources</h3>
+<ul>
+<li>
+<h4 id="bio-oracle-marspec-data-accesed-through-sdmpredictors">
+<a href="https://www.bio-oracle.org/"><strong>Bio-ORACLE</strong></a> &amp; <a href="http://www.marspec.org/"><strong>MARSPEC</strong></a> data accesed through <code>sdmpredictors</code>:</h4>
+<p>a set of GIS rasters providing geophysical, biotic and environmental data for surface and benthic marine realms. Accessed via <a href="https://github.com/lifewatch/sdmpredictors"><code>sdmpredictors</code></a></p>
+</li>
+<li>
+<h4 id="sedmaps-synthetic-map-of-the-nw-european-shelf-sedimentary-environment">
+<code>sedmaps</code> <a href="https://www.earth-syst-sci-data.net/10/109/2018/essd-10-109-2018.pdf">Synthetic map of the NW European Shelf sedimentary environment</a>
+</h4>
+<p><strong>data product</strong> <a href="https://pureportal.strath.ac.uk/en/datasets/data-for-a-synthetic-map-of-the-northwest-european-shelf-sediment">10.15129/1e27b806-1eae-494d-83b5-a5f4792c46fc</a> 0.125◦ by 0.125◦ resolution synthetic maps of continuous properties of the north-west European sedimentary environment. The maps are a blend of gridded survey data, statistically modelled values based on distributions of bed shear stress due to tidal currents and waves and bathymetric properties.</p>
+<ul>
+<li>percentage compositions of mud, sand and gravel;</li>
+<li>porosity and permeability;</li>
+<li>median grain size of the whole sediment and of the sand and the gravel fractions;</li>
+<li>carbon and nitrogen content of sediments;</li>
+<li>percentage of seabed area covered by rock;</li>
+<li>mean and maximum depth-averaged tidal velocity and wave orbital velocity at the seabed; and mean monthly natural disturbance rates.</li>
+</ul>
+</li>
+<li><h4 id="emodnet-seabed-habitat-maps"><a href="">EMODnet Seabed Habitat maps</a></h4></li>
+</ul>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<!-- You can install the released version of OBIShmpr from [CRAN](https://CRAN.R-project.org) with: 
-
-``` r
-install.packages("OBIShmpr")
-```
--->
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"annakrystalli/OBIShmpr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"annakrystalli/OBIShmpr"</span>)</a></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
@@ -96,18 +116,100 @@ install.packages("OBIShmpr")
 <div id="get-habitat-data-for-a-species" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-habitat-data-for-a-species" class="anchor"></a>Get habitat data for a species</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(OBIShmpr)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">## basic example code</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(OBIShmpr)</a></code></pre></div>
 </div>
 </div>
 <div id="an-example-with-one-species" class="section level2">
 <h2 class="hasAnchor">
 <a href="#an-example-with-one-species" class="anchor"></a>An example with one species</h2>
 <p>This is an example of how to run the above code for a single species - we use <em>Scytothamnus fasciculatus</em>, Aphia ID 325567, chosen as it has just 6 OBIS records so should run reasonably quickly.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="reference/get_temp_summ_by_sp.html">get_temp_summ_by_sp</a></span>(<span class="dt">sp_id =</span> <span class="dv">325567</span>)</a></code></pre></div>
-<div id="get-species-profile-for-habitat" class="section level3">
+<p>Choose some layers to extract data from</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">sp_id &lt;-<span class="st"> </span><span class="dv">325567</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">layers &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"BO2_nitratemax_bdmin"</span>, <span class="st">"BO_parmax"</span>, <span class="st">"BO2_tempmax_bdmax"</span>, <span class="st">"permeability"</span>, </a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">"tidal_vel_max"</span>, <span class="st">"april"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/obis_match_habitat.html">obis_match_habitat</a></span>(sp_id, <span class="dt">layers =</span> layers)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; Simple feature collection with 6 features and 16 fields</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; geometry type:  POINT</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; dimension:      XY</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; bbox:           xmin: -65 ymin: -48.65 xmax: 173.7005 ymax: -40.7</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; epsg (SRID):    4326</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; # A tibble: 6 x 17</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;   scientificName aphiaID maximumDepthInM… id    minimumDepthInM… eventDate depth</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;   &lt;chr&gt;            &lt;int&gt; &lt;lgl&gt;            &lt;chr&gt; &lt;lgl&gt;            &lt;chr&gt;     &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; 1 Scytothamnus …  325567 NA               079a… NA               &lt;NA&gt;         NA</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; 2 Scytothamnus …  325567 NA               45b1… NA               &lt;NA&gt;         NA</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt; 3 Scytothamnus …  325567 NA               6761… NA               &lt;NA&gt;         NA</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 4 Scytothamnus …  325567 NA               99b4… NA               &lt;NA&gt;         NA</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 5 Scytothamnus …  325567 NA               cbf1… NA               &lt;NA&gt;         NA</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 6 Scytothamnus …  325567 NA               dd42… NA               1945/09/…    NA</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; # … with 10 more variables: year &lt;chr&gt;, month &lt;chr&gt;, depth0 &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; #   geometry &lt;POINT [°]&gt;, BO2_nitratemax_bdmin &lt;dbl&gt;, BO_parmax &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt; #   BO2_tempmax_bdmax &lt;dbl&gt;, permeability &lt;lgl&gt;, tidal_vel_max &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; #   april &lt;lgl&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">layer_codes &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"BO_ph"</span>, <span class="st">"BO_phosphate"</span>, </a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">                 <span class="st">"BO2_phosphatemean_bdmax"</span>, </a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">                 <span class="st">"BO_nitrate"</span>, <span class="st">"BO2_nitratemean_bdmax"</span>, </a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">                 <span class="st">"surface_nitrogen"</span>, <span class="st">"tn"</span>, <span class="st">"surface_carbon"</span>,</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">                 <span class="st">"BO_sstmean"</span>, <span class="st">"BO_sstmin"</span>, <span class="st">"BO_sstmax"</span>, </a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">                 <span class="st">"MS_biogeo13_sst_mean_5m"</span>, <span class="st">"MS_biogeo14_sst_min_5m"</span>,</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">                 <span class="st">"MS_biogeo15_sst_max_5m"</span>)</a></code></pre></div>
+<div id="palinurus-elephas" class="section level3">
 <h3 class="hasAnchor">
-<a href="#get-species-profile-for-habitat" class="anchor"></a>Get species profile for habitat</h3>
+<a href="#palinurus-elephas" class="anchor"></a><em>Palinurus elephas</em>
+</h3>
+<p>Next I use the AphiaID for <em>Palinurus elephas</em>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">species_id &lt;-<span class="st"> </span>worrms<span class="op">::</span><span class="kw"><a href="https://docs.ropensci.org/worrms/reference/wm_name2id.html">wm_name2id</a></span>(<span class="st">"Palinurus elephas"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">data &lt;-<span class="st"> </span>OBIShmpr<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/OBIShmpr/man/obis_match_habitat.html">obis_match_habitat</a></span>(</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">    <span class="dt">sp_id =</span> species_id, </a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">    <span class="dt">layers =</span> layer_codes,</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">    <span class="dt">geometry =</span> bbox_nwes)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; Retrieved 96 records of approximately 96 (100%)✓ `obis_recs` successfully converted to sf</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; ✓ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; ✓ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">data</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; Simple feature collection with 96 features and 24 fields</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; geometry type:  POINT</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; dimension:      XY</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; bbox:           xmin: -10.60808 ymin: 45.59042 xmax: 4.95983 ymax: 58.92086</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; epsg (SRID):    4326</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; # A tibble: 96 x 25</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;    month year  scientificName aphiaID maximumDepthInM… id    eventDate</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;int&gt;            &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    </span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;  1 08    1992  Palinurus ele…  107703               NA 039f… 1992-08-…</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;  2 07    2003  Palinurus ele…  107703               NA 0a5a… 2003-07-…</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;  3 05    2010  Palinurus ele…  107703               NA 0a88… 2010-05-…</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt;  4 07    1977  Palinurus ele…  107703               NA 0b6f… 1977-07-…</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt;  5 06    1981  Palinurus ele…  107703               NA 0e4d… 1981-06-…</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt;  6 05    2010  Palinurus ele…  107703               NA 0f0d… 2010-05-…</span></a>
+<a class="sourceLine" id="cb6-27" data-line-number="27"><span class="co">#&gt;  7 08    2009  Palinurus ele…  107703               NA 1041… 2009-08-…</span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28"><span class="co">#&gt;  8 07    2009  Palinurus ele…  107703               NA 109e… 2009-07-…</span></a>
+<a class="sourceLine" id="cb6-29" data-line-number="29"><span class="co">#&gt;  9 08    1988  Palinurus ele…  107703               NA 14f4… 1988-08-…</span></a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="co">#&gt; 10 07    2011  Palinurus ele…  107703               NA 17f1… 2011-07-…</span></a>
+<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="co">#&gt; # … with 86 more rows, and 18 more variables: minimumDepthInMeters &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="co">#&gt; #   depth &lt;dbl&gt;, depth0 &lt;dbl&gt;, geometry &lt;POINT [°]&gt;, BO_ph &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb6-33" data-line-number="33"><span class="co">#&gt; #   BO_phosphate &lt;dbl&gt;, BO2_phosphatemean_bdmax &lt;dbl&gt;, BO_nitrate &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb6-34" data-line-number="34"><span class="co">#&gt; #   BO2_nitratemean_bdmax &lt;dbl&gt;, surface_nitrogen &lt;dbl&gt;, tn &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb6-35" data-line-number="35"><span class="co">#&gt; #   surface_carbon &lt;dbl&gt;, BO_sstmean &lt;dbl&gt;, BO_sstmin &lt;dbl&gt;, BO_sstmax &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb6-36" data-line-number="36"><span class="co">#&gt; #   MS_biogeo13_sst_mean_5m &lt;dbl&gt;, MS_biogeo14_sst_min_5m &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb6-37" data-line-number="37"><span class="co">#&gt; #   MS_biogeo15_sst_max_5m &lt;dbl&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">world &lt;-<span class="st"> </span>rnaturalearth<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rnaturalearth/man/ne_countries.html">ne_countries</a></span>(<span class="dt">scale =</span> <span class="st">"medium"</span>, <span class="dt">returnclass =</span> <span class="st">"sf"</span>)</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span>(<span class="dt">data =</span> world) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span>(<span class="dt">data =</span> data, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">color =</span> BO_ph) ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span>(<span class="dt">crs =</span> <span class="dv">3035</span>,</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">             <span class="dt">xlim =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">2426378.0132</span>, <span class="fl">7093974.6215</span>),</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">             <span class="dt">ylim =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">1308101.2618</span>, <span class="fl">5446513.5222</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="st">    </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span>(<span class="st">"Palinurus elephas"</span>,</a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">            <span class="dt">subtitle =</span> <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">'AphiaID = '</span>, species_id))</a></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
 </div>
 </div>
 </div>
@@ -125,16 +227,24 @@ install.packages("OBIShmpr")
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Anna Krystalli <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-2378-4915" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
-<li>Thomas Webb <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-3183-8116" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>European Marine Observation Data Network (EMODnet) Biology project European Commission's Directorate - General for Maritime Affairs and Fisheries (DG MARE) <br><small class="roles"> Funder, copyright holder </small>  </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/annakrystalli/OBIShmpr/actions"><img src="https://github.com/annakrystalli/OBIShmpr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://codecov.io/gh/annakrystalli/OBIShmpr?branch=master"><img src="https://codecov.io/gh/annakrystalli/OBIShmpr/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Anna Krystalli, Thomas Webb.</p>
+  <p>Developed by Anna Krystalli, European Marine Observation Data Network (EMODnet) Biology project European Commission's Directorate - General for Maritime Affairs and Fisheries (DG MARE).</p>
 </div>
 
 <div class="pkgdown">
