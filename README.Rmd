@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # OBIShmpr
 
 <!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build status](https://github.com/annakrystalli/OBIShmpr/workflows/R-CMD-check/badge.svg)](https://github.com/annakrystalli/OBIShmpr/actions)
 [![Codecov test coverage](https://codecov.io/gh/annakrystalli/OBIShmpr/branch/master/graph/badge.svg)](https://codecov.io/gh/annakrystalli/OBIShmpr?branch=master)
 <!-- badges: end -->
