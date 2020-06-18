@@ -9,12 +9,16 @@
 #' @param layers character vector of habitat layers to match
 #' @param trim whether to trim output to a particular area
 #' @inheritParams get_obis_recs
-#' @return
+#' @return an `sf` object, one row for each species occurence returned from obis.
+#' Column include requested OBIS metadata through `fields` argument plus a column 
+#' for each layer environmental layer requested containing data retuned for each
+#' occurence location.
 #' @export
 #'
 #' @examples
-#' obis_match_habitat(sp_id = 325567, 
-#' layers = c("BO_bathymean", "BO2_phosphateltmax_bdmean", "BO2_salinitymin_ss", "rock50cm", "april", "march"))
+#' obis_match_habitat(sp_id = 325567, layers = c("BO_bathymean", 
+#'                    "BO2_phosphateltmax_bdmean", "BO2_salinitymin_ss", 
+#'                    "rock50cm", "april", "march"))
 obis_match_habitat <- function(sp_id, layers,
                                fields = c(
                                  "decimalLongitude", "decimalLatitude",
