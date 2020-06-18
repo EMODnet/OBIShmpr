@@ -10,12 +10,13 @@
 #' @return an sf of requested features
 #' @export
 #' @examples
-#' \dontrun
+#' \dontrun{
 #' proj_dir <- tempdir()
 #' cache_dir <- fs::path(proj_dir, "cached-data")
 #' get_emodnet_wfs_layers(layers = "be000142", 
 #'                        service = "seabed_habitats_individual_habitat_map_and_model_datasets",
 #'                       cache_dir = cache_dir)
+#'}
 get_emodnet_wfs_layers <- function(layers, service,
                                cache_dir = NULL,
                                overwrite = FALSE) {
