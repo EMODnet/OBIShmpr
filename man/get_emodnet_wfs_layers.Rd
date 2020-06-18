@@ -5,9 +5,11 @@
 \title{Access EMODnet EUNIS Seabed Habitat layers}
 \usage{
 get_emodnet_wfs_layers(
-  layers = c("be000142", "be000143", "be000144", "bg003005", "es000001", "es001000"),
+  layers,
   cache_dir = NULL,
-  wfs_url = "https://ows.emodnet-seabedhabitats.eu/emodnet_open_maplibrary/wfs"
+  wfs_url = "https://ows.emodnet-seabedhabitats.eu/emodnet_open_maplibrary/wfs",
+  crs = 4326,
+  overwrite = FALSE
 )
 }
 \arguments{
@@ -17,6 +19,8 @@ get_emodnet_wfs_layers(
 folder in the root of the current project}
 
 \item{wfs_url}{url to the EMODnet WFS service. Defaults to the EUNIS seabed habitat map wfs.}
+
+\item{crs}{EPSG crs code to reproject to. Defaults to 4326}
 }
 \value{
 an sf of requested features

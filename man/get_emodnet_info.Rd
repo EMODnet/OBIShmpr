@@ -5,11 +5,14 @@
 \title{Access EMODnet WFS info}
 \usage{
 get_emodnet_info(
-  wfs_url = "https://ows.emodnet-seabedhabitats.eu/emodnet_open_maplibrary/wfs"
+  wfs_url = "https://ows.emodnet-seabedhabitats.eu/emodnet_open_maplibrary/wfs",
+  layers = NULL
 )
 }
 \arguments{
 \item{wfs_url}{url to the EMODnet WFS service. Defaults to the EUNIS seabed habitat map wfs.}
+
+\item{layers}{character vector of EMODnet seabed habitat wfs layer names.}
 }
 \value{
 WFS available feature information
