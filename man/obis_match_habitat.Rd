@@ -2,14 +2,19 @@
 % Please edit documentation in R/obis-to-h.R
 \name{obis_match_habitat}
 \alias{obis_match_habitat}
-\title{Title}
+\title{Get OBIS occurences matched to layers of evironmental data}
 \usage{
 obis_match_habitat(
   sp_id,
   layers,
+  fields = c("decimalLongitude", "decimalLatitude", "minimumDepthInMeters",
+    "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName",
+    "aphiaID"),
   check_match = FALSE,
   validate_sp_id = FALSE,
-  trim = NULL
+  trim = NULL,
+  geometry = NULL,
+  ignore_failures = FALSE
 )
 }
 \arguments{
@@ -17,9 +22,19 @@ obis_match_habitat(
 
 \item{layers}{character vector of habitat layers to match}
 
+\item{fields}{fields to return from OBIS query. Defaults to \code{c("decimalLongitude", "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName", "aphiaID")}}
+
 \item{check_match}{whether to check validity of \code{sp_id}.}
 
+\item{validate_sp_id}{whether to check for validity of aphiaID on OBIS}
+
 \item{trim}{whether to trim output to a particular area}
+
+\item{geometry}{an sf object. Queries will be faster if the
+geometry is simple and restricted in space.}
+
+\item{ignore_failures}{whether to through an error or return
+NULL for queries that return no obis records.}
 }
 \value{
 

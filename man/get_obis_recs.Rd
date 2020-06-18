@@ -10,7 +10,9 @@ get_obis_recs(
   fields = c("decimalLongitude", "decimalLatitude", "minimumDepthInMeters",
     "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName",
     "aphiaID"),
-  trim = NULL
+  trim = NULL,
+  geometry = NULL,
+  ignore_failures = FALSE
 )
 }
 \arguments{
@@ -18,7 +20,13 @@ get_obis_recs(
 
 \item{validate_sp_id}{whether to check for validity of aphiaID on OBIS}
 
-\item{fields}{fields to return from OBIS query. Defaults to \code{c("decimalLongitude",  "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName", "aphiaID")}}
+\item{fields}{fields to return from OBIS query. Defaults to \code{c("decimalLongitude", "decimalLatitude","minimumDepthInMeters", "maximumDepthInMeters", "depth", "eventDate", "year", "month", "scientificName", "aphiaID")}}
+
+\item{geometry}{an sf object. Queries will be faster if the
+geometry is simple and restricted in space.}
+
+\item{ignore_failures}{whether to through an error or return
+NULL for queries that return no obis records.}
 }
 \value{
 a tibble of OBIS occurence records
