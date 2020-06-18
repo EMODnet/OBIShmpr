@@ -8,3 +8,6 @@ attic
 inst/testdata
 .DS_Store
 data-raw/*
+inst/doc
+doc
+Meta
