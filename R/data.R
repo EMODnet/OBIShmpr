@@ -1,3 +1,11 @@
+#' Available habitate layer metadata
+#'
+#' Metadata attributes of all available data layers
+#' 
+#' @format A tibble of 34 variables and 1,459 observations
+"layer_info"
+
+
 #' North-west European Shelf sedimentary environment.
 #'
 #' A dataset from Wilson, R. J., Speirs, D. C., Sabatino, A., and Heath, M. R.: 
