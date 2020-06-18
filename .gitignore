@@ -7,3 +7,4 @@ raw-data
 attic
 inst/testdata
 .DS_Store
+data-raw/*
