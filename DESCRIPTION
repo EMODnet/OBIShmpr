@@ -1,5 +1,5 @@
 Package: OBIShmpr
-Title: Link and query OBIS occurence data with a variety of marine habitat data.
+Title: Link and query OBIS occurence data with a variety of marine habitat data
 Version: 0.0.0.901
 Authors@R: c(
     person(given = "Anna",
@@ -37,14 +37,18 @@ Imports:
     glue,
     usethis,
     purrr,
-    ows4R,
-    EMODnetWFS
+    EMODnetWFS,
+    fs,
+    checkmate,
+    janitor
 Date: 2020-02-10
 Remotes:
     annakrystalli/EMODnetWFS
 Suggests: 
     rmarkdown,
     ggplot2,
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    ncdf4,
+    rnaturalearth
 Depends: 
     R (>= 2.10)
