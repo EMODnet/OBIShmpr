@@ -8,14 +8,13 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
-status](https://github.com/annakrystalli/OBIShmpr/workflows/R-CMD-check/badge.svg)](https://github.com/annakrystalli/OBIShmpr/actions)
+status](https://github.com/EMODnet/OBIShmpr/workflows/R-CMD-check/badge.svg)](https://github.com/EMODnet/OBIShmpr/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/annakrystalli/OBIShmpr/branch/master/graph/badge.svg)](https://codecov.io/gh/annakrystalli/OBIShmpr?branch=master)
+coverage](https://codecov.io/gh/EMODnet/OBIShmpr/branch/master/graph/badge.svg)](https://codecov.io/gh/EMODnet/OBIShmpr?branch=master)
 <!-- badges: end -->
 
 The goal of OBIShmpr is to link and query OBIS occurence data with a
-variety of marine habitat
-    data.
+variety of marine habitat data.
 
 ### Data Sources
 
@@ -54,7 +53,7 @@ You can install the development version from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("annakrystalli/OBIShmpr")
+remotes::install_github("EMODnet/OBIShmpr")
 ```
 
 ## Example
@@ -85,17 +84,16 @@ obis_match_habitat(sp_id, layers = layers)
 #> geometry type:  POINT
 #> dimension:      XY
 #> bbox:           xmin: -65 ymin: -48.65 xmax: 173.7005 ymax: -40.7
-#> epsg (SRID):    4326
-#> proj4string:    +proj=longlat +datum=WGS84 +no_defs
+#> CRS:            EPSG:4326
 #> # A tibble: 6 x 17
 #>   scientificName aphiaID maximumDepthInM… id    minimumDepthInM… eventDate depth
 #>   <chr>            <int> <lgl>            <chr> <lgl>            <chr>     <dbl>
-#> 1 Scytothamnus …  325567 NA               079a… NA               <NA>         NA
-#> 2 Scytothamnus …  325567 NA               45b1… NA               <NA>         NA
-#> 3 Scytothamnus …  325567 NA               6761… NA               <NA>         NA
-#> 4 Scytothamnus …  325567 NA               99b4… NA               <NA>         NA
-#> 5 Scytothamnus …  325567 NA               cbf1… NA               <NA>         NA
-#> 6 Scytothamnus …  325567 NA               dd42… NA               1945/09/…    NA
+#> 1 Scytothamnus …  325567 NA               025d… NA               <NA>         NA
+#> 2 Scytothamnus …  325567 NA               0d31… NA               <NA>         NA
+#> 3 Scytothamnus …  325567 NA               4c2c… NA               <NA>         NA
+#> 4 Scytothamnus …  325567 NA               5a38… NA               1945/09/…    NA
+#> 5 Scytothamnus …  325567 NA               974d… NA               <NA>         NA
+#> 6 Scytothamnus …  325567 NA               cdbb… NA               <NA>         NA
 #> # … with 10 more variables: year <chr>, month <chr>, depth0 <dbl>,
 #> #   geometry <POINT [°]>, BO2_nitratemax_bdmin <dbl>, BO_parmax <dbl>,
 #> #   BO2_tempmax_bdmax <dbl>, permeability <lgl>, tidal_vel_max <lgl>,
@@ -124,29 +122,46 @@ data <- OBIShmpr::obis_match_habitat(
     layers = layer_codes,
     geometry = bbox_nwes)
 #> Retrieved 96 records of approximately 96 (100%)✓ `obis_recs` successfully converted to sf
-#> ✓ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs
-#> ✓ `obis_recs` crs: 4326, +proj=longlat +datum=WGS84 +no_defs
+#> ✓ `obis_recs` crs: EPSG:4326, GEOGCS["WGS 84",
+#>       DATUM["WGS_1984",
+#>           SPHEROID["WGS 84",6378137,298.257223563,
+#>               AUTHORITY["EPSG","7030"]],
+#>           AUTHORITY["EPSG","6326"]],
+#>       PRIMEM["Greenwich",0,
+#>           AUTHORITY["EPSG","8901"]],
+#>       UNIT["degree",0.0174532925199433,
+#>           AUTHORITY["EPSG","9122"]],
+#>       AUTHORITY["EPSG","4326"]]
+#> ✓ `obis_recs` crs: EPSG:4326, GEOGCS["WGS 84",
+#>       DATUM["WGS_1984",
+#>           SPHEROID["WGS 84",6378137,298.257223563,
+#>               AUTHORITY["EPSG","7030"]],
+#>           AUTHORITY["EPSG","6326"]],
+#>       PRIMEM["Greenwich",0,
+#>           AUTHORITY["EPSG","8901"]],
+#>       UNIT["degree",0.0174532925199433,
+#>           AUTHORITY["EPSG","9122"]],
+#>       AUTHORITY["EPSG","4326"]]
 
 data
 #> Simple feature collection with 96 features and 24 fields
 #> geometry type:  POINT
 #> dimension:      XY
 #> bbox:           xmin: -10.60808 ymin: 45.59042 xmax: 4.95983 ymax: 58.92086
-#> epsg (SRID):    4326
-#> proj4string:    +proj=longlat +datum=WGS84 +no_defs
+#> CRS:            EPSG:4326
 #> # A tibble: 96 x 25
 #>    month year  scientificName aphiaID maximumDepthInM… id    eventDate
 #>    <chr> <chr> <chr>            <int>            <dbl> <chr> <chr>    
-#>  1 08    1992  Palinurus ele…  107703               NA 039f… 1992-08-…
-#>  2 07    2003  Palinurus ele…  107703               NA 0a5a… 2003-07-…
-#>  3 05    2010  Palinurus ele…  107703               NA 0a88… 2010-05-…
-#>  4 07    1977  Palinurus ele…  107703               NA 0b6f… 1977-07-…
-#>  5 06    1981  Palinurus ele…  107703               NA 0e4d… 1981-06-…
-#>  6 05    2010  Palinurus ele…  107703               NA 0f0d… 2010-05-…
-#>  7 08    2009  Palinurus ele…  107703               NA 1041… 2009-08-…
-#>  8 07    2009  Palinurus ele…  107703               NA 109e… 2009-07-…
-#>  9 08    1988  Palinurus ele…  107703               NA 14f4… 1988-08-…
-#> 10 07    2011  Palinurus ele…  107703               NA 17f1… 2011-07-…
+#>  1 10    1982  Palinurus ele…  107703               NA 01c3… 1982-10-…
+#>  2 04    2003  Palinurus ele…  107703               NA 01d3… 2003-04-…
+#>  3 08    2009  Palinurus ele…  107703               NA 0227… 2009-08-…
+#>  4 06    2009  Palinurus ele…  107703               NA 0704… 2009-06-…
+#>  5 09    2009  Palinurus ele…  107703               NA 0a2e… 2009-09-…
+#>  6 08    1978  Palinurus ele…  107703               NA 0afa… 1978-08-…
+#>  7 07    1977  Palinurus ele…  107703               NA 0b1b… 1977-07-…
+#>  8 08    2010  Palinurus ele…  107703               NA 0d72… 2010-08-…
+#>  9 08    2009  Palinurus ele…  107703               NA 0dbe… 2009-08-…
+#> 10 07    2009  Palinurus ele…  107703               NA 0e17… 2009-07-…
 #> # … with 86 more rows, and 18 more variables: minimumDepthInMeters <int>,
 #> #   depth <dbl>, depth0 <dbl>, geometry <POINT [°]>, BO_ph <dbl>,
 #> #   BO_phosphate <dbl>, BO2_phosphatemean_bdmax <dbl>, BO_nitrate <dbl>,
